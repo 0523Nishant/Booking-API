@@ -84,7 +84,27 @@ npm install
 ```
 
 ---
+## ER diagram
++--------+          +--------+          +---------+
+| users  |          | books  |          | reviews |
++--------+          +--------+          +---------+
+| id     |◄────┐ ┌──► id     |◄────┐ ┌──► id      |
+| name   |     │ │  | title  |     │ │  | user_id |
+| email  |     │ │  | author |     │ │  | book_id |
+| password|    │ │  | genre  |     │ │  | rating  |
++--------+     │ │  | desc.  |     │ │  | comment |
+               │ │  +--------+     │ │  +---------+
+               │ └──────────────┐  │ │
+               └───────────────┘  └─┘
 
+Relationships:
+- Each review is linked to one user (`user_id`) and one book (`book_id`)
+- Each user can review a book only once: `UNIQUE(user_id, book_id)`
+
+
+```
+
+---
 ## ▶️ Running the Server
 
 ```bash
